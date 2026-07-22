@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://codl0r07jy0sm"]
+
+[ext_resource type="Script" uid="uid://mdq8igqc5kex" path="res://player.gd" id="1_v0iea"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f60y1"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_v0iea"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_cvnsp"]
+
+[node name="Player" type="CharacterBody2D" unique_id=1119650225 node_paths=PackedStringArray("player_camera", "gun")]
+script = ExtResource("1_v0iea")
+player_camera = NodePath("Camera2D")
+gun = NodePath("GrenedeLauncher")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=970443003]
+top_level = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1229799560]
+shape = SubResource("CircleShape2D_f60y1")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1985996032]
+scale = Vector2(18, 17.000002)
+mesh = SubResource("QuadMesh_v0iea")
+
+[node name="GrenedeLauncher" type="Node2D" parent="." unique_id=2122522478]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="GrenedeLauncher" unique_id=1156913528]
+position = Vector2(14.999999, 0)
+scale = Vector2(10.535799, 2.6533349)
+mesh = SubResource("QuadMesh_cvnsp")

@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://bpkuhx8kaufsb"]
+
+[ext_resource type="PackedScene" uid="uid://codl0r07jy0sm" path="res://Scenes/player.tscn" id="1_yg7k7"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_tp02r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5nqk"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_rbwu2"]
+
+[node name="RandomlyGeneratedWorld" type="Node2D" unique_id=1017041638]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1136703094]
+modulate = Color(0.63160366, 0.3467673, 1.92523e-07, 1)
+z_index = -1
+position = Vector2(1565.502, 1296.0005)
+scale = Vector2(60343, 37612)
+mesh = SubResource("QuadMesh_tp02r")
+
+[node name="EdgeWalls" type="Node2D" parent="." unique_id=1457121877]
+
+[node name="EdgeWall" type="StaticBody2D" parent="EdgeWalls" unique_id=1488384035]
+modulate = Color(0.23248088, 0.23248091, 0.23248091, 1)
+position = Vector2(-1323.0001, 173)
+scale = Vector2(7.2293286, 140.29736)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EdgeWalls/EdgeWall" unique_id=1310534296]
+shape = SubResource("RectangleShape2D_k5nqk")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="EdgeWalls/EdgeWall" unique_id=1263324442]
+scale = Vector2(20, 20)
+mesh = SubResource("QuadMesh_rbwu2")
+
+[node name="EdgeWall2" type="StaticBody2D" parent="EdgeWalls" unique_id=1860750408]
+modulate = Color(0.23248088, 0.23248091, 0.23248091, 1)
+position = Vector2(2774, 173)
+scale = Vector2(7.2293286, 140.29736)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EdgeWalls/EdgeWall2" unique_id=1909507521]
+shape = SubResource("RectangleShape2D_k5nqk")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="EdgeWalls/EdgeWall2" unique_id=1520165625]
+scale = Vector2(20, 20)
+mesh = SubResource("QuadMesh_rbwu2")
+
+[node name="EdgeWall3" type="StaticBody2D" parent="EdgeWalls" unique_id=823410501]
+modulate = Color(0.23248088, 0.23248091, 0.23248091, 1)
+position = Vector2(695, 1508)
+rotation = 1.5707964
+scale = Vector2(7.2293286, 203.5064)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EdgeWalls/EdgeWall3" unique_id=1504797220]
+shape = SubResource("RectangleShape2D_k5nqk")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="EdgeWalls/EdgeWall3" unique_id=1722489582]
+scale = Vector2(20, 20)
+mesh = SubResource("QuadMesh_rbwu2")
+
+[node name="EdgeWall4" type="StaticBody2D" parent="EdgeWalls" unique_id=329897947]
+modulate = Color(0.23248088, 0.23248091, 0.23248091, 1)
+position = Vector2(695, -1131.9998)
+rotation = 1.5707964
+scale = Vector2(7.2293286, 203.5064)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EdgeWalls/EdgeWall4" unique_id=763033950]
+shape = SubResource("RectangleShape2D_k5nqk")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="EdgeWalls/EdgeWall4" unique_id=1400411475]
+scale = Vector2(20, 20)
+mesh = SubResource("QuadMesh_rbwu2")
+
+[node name="EdgeWall5" type="StaticBody2D" parent="EdgeWalls" unique_id=361712081]
+modulate = Color(0.23248088, 0.23248091, 0.23248091, 1)
+position = Vector2(324, -179)
+rotation = 1.5707964
+scale = Vector2(9.593607, 17.196804)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EdgeWalls/EdgeWall5" unique_id=1920673403]
+shape = SubResource("RectangleShape2D_k5nqk")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="EdgeWalls/EdgeWall5" unique_id=1462565629]
+scale = Vector2(20, 20)
+mesh = SubResource("QuadMesh_rbwu2")
+
+[node name="Player" parent="." unique_id=1119650225 instance=ExtResource("1_yg7k7")]
