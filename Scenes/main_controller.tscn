@@ -1,11 +1,199 @@
 [gd_scene format=3 uid="uid://xl8ckd4l8daq"]
 
 [ext_resource type="Script" uid="uid://dmj43n6a2pkre" path="res://Scripts/main_controller.gd" id="1_7i2o3"]
+[ext_resource type="FontFile" uid="uid://bjokgtb88a6nq" path="res://UI_Stuff/KiwiSoda.ttf" id="2_w65co"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w65co"]
+bg_color = Color(0.5294118, 0.73333335, 0.63529414, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imspx"]
+bg_color = Color(0.23137255, 0.3764706, 0.39215687, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1oh2b"]
+bg_color = Color(0.33333334, 0.50980395, 0.54509807, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3n34"]
+bg_color = Color(0.33333334, 0.50980395, 0.54509807, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykrsg"]
+bg_color = Color(0.33333334, 0.50980395, 0.54509807, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_w65co"]
 
 [node name="MainController" type="Node2D" unique_id=969106577 node_paths=PackedStringArray("controller_camera")]
 script = ExtResource("1_7i2o3")
 controller_camera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=847493547]
+zoom = Vector2(20, 20)
 
 [node name="Grenade_Spaw_Pos" type="Node2D" parent="." unique_id=873948083]
+
+[node name="PlanningCanvas" type="CanvasLayer" parent="." unique_id=1756421983]
+unique_name_in_owner = true
+
+[node name="Back" type="Button" parent="PlanningCanvas" unique_id=2081663136]
+unique_name_in_owner = true
+z_index = 4
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 49.0
+offset_top = -44.0
+offset_right = 140.0
+offset_bottom = 44.112
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.23137255, 0.3764706, 0.39215687, 1)
+theme_override_fonts/font = ExtResource("2_w65co")
+theme_override_font_sizes/font_size = 86
+theme_override_styles/normal = SubResource("StyleBoxFlat_w65co")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_imspx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1oh2b")
+text = "<"
+
+[node name="Forward" type="Button" parent="PlanningCanvas" unique_id=512453181]
+unique_name_in_owner = true
+z_index = 4
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -44.0
+offset_right = -43.0
+offset_bottom = 44.112
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.23137255, 0.3764706, 0.39215687, 1)
+theme_override_fonts/font = ExtResource("2_w65co")
+theme_override_font_sizes/font_size = 86
+theme_override_styles/normal = SubResource("StyleBoxFlat_w65co")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_imspx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1oh2b")
+text = ">"
+
+[node name="HSlider" type="HSlider" parent="PlanningCanvas" unique_id=1491470136]
+unique_name_in_owner = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_top = -83.0
+offset_right = 871.0
+offset_bottom = -19.0
+grow_vertical = 0
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_c3n34")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_ykrsg")
+min_value = 5.0
+max_value = 60.0
+value = 5.0
+
+[node name="Label" type="Label" parent="PlanningCanvas" unique_id=1128086005]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 36.0
+offset_top = -163.0
+offset_right = 871.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.23137255, 0.3764706, 0.39215687, 1)
+theme_override_font_sizes/font_size = 60
+text = "Seconds until Detonation:
+"
+
+[node name="Seconds" type="Label" parent="PlanningCanvas" unique_id=22422983]
+unique_name_in_owner = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 679.0
+offset_top = -176.0
+offset_right = 1058.0
+offset_bottom = 27.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.23137255, 0.69411767, 0.39215687, 1)
+theme_override_font_sizes/font_size = 100
+text = "10
+"
+
+[node name="GrenadeType" type="Label" parent="PlanningCanvas" unique_id=2006227507]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -466.0
+offset_top = 18.0
+offset_right = -41.0
+offset_bottom = 181.0
+grow_horizontal = 0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0.23137255, 0.3764706, 0.39215687, 1)
+theme_override_font_sizes/font_size = 70
+text = "XXL Grenade
+"
+
+[node name="Play" type="Button" parent="PlanningCanvas" unique_id=1529407947]
+unique_name_in_owner = true
+z_index = 4
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -232.0
+offset_top = -205.0
+offset_right = -81.0
+offset_bottom = -110.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.23137255, 0.3764706, 0.39215687, 1)
+theme_override_fonts/font = ExtResource("2_w65co")
+theme_override_font_sizes/font_size = 86
+theme_override_styles/normal = SubResource("StyleBoxFlat_w65co")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_imspx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1oh2b")
+disabled = true
+text = "play"
+
+[node name="EditToPlayText" type="Label" parent="PlanningCanvas" unique_id=396357940]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -224.0
+offset_top = -99.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.23137255, 0.3764706, 0.39215687, 1)
+theme_override_font_sizes/font_size = 30
+text = "edit all grenades
+detonation to play
+"
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=779872765]
+modulate = Color(0.7882353, 0.89411765, 0.7921569, 1)
+z_index = -2
+scale = Vector2(3889.4128, 2906.8748)
+mesh = SubResource("QuadMesh_w65co")

@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://yc805i5tf6jv" path="res://Scenes/base_grenade.gd" id="1_frl0m"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_frl0m"]
+bounce = 1.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_6vce7"]
 radius = 5.0990195
 
@@ -12,6 +15,7 @@ size = Vector2(9, 8)
 
 [node name="BaseGrenade" type="RigidBody2D" unique_id=1473638359 node_paths=PackedStringArray("collision")]
 visible = false
+physics_material_override = SubResource("PhysicsMaterial_frl0m")
 gravity_scale = 0.0
 linear_damp_mode = 1
 linear_damp = 24.445

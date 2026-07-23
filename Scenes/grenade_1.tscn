@@ -4,3 +4,4 @@
 
 [node name="Grenade1" unique_id=1473638359 instance=ExtResource("1_puvox")]
 linear_damp = 1.199
+grenade_name = "Basic Grenade"

@@ -13,7 +13,7 @@
 [node name="RandomlyGeneratedWorld" type="Node2D" unique_id=1017041638]
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1136703094]
-modulate = Color(0.63160366, 0.3467673, 1.92523e-07, 1)
+modulate = Color(0.7882353, 0.6784314, 0.654902, 1)
 z_index = -1
 position = Vector2(1565.502, 1296.0005)
 scale = Vector2(60343, 37612)
@@ -81,13 +81,14 @@ scale = Vector2(9.593607, 17.196804)
 shape = SubResource("RectangleShape2D_k5nqk")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="EdgeWalls/EdgeWall5" unique_id=1462565629]
+modulate = Color(0.9490196, 0.9137255, 0.89411765, 1)
 scale = Vector2(20, 20)
 mesh = SubResource("QuadMesh_rbwu2")
 
 [node name="Player" parent="." unique_id=1119650225 instance=ExtResource("1_yg7k7")]
 
 [node name="MainController" parent="." unique_id=969106577 node_paths=PackedStringArray("player", "player_camera", "grenade_launcher", "grenade_spawn_pos") instance=ExtResource("2_k5nqk")]
-position = Vector2(707, -25)
+position = Vector2(57, -19041)
 player = NodePath("../Player")
 player_camera = NodePath("../Player/Camera2D")
 grenade_launcher = NodePath("../Player/GrenedeLauncher")

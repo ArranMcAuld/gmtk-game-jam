@@ -15,9 +15,17 @@ run/main_scene="uid://bpkuhx8kaufsb"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [dotnet]
 
 project/assembly_name="GMTK game Jam"
+
+[gui]
+
+theme/custom_font="uid://bjokgtb88a6nq"
 
 [input]
 
