@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://codl0r07jy0sm"]
 
 [ext_resource type="Script" uid="uid://mdq8igqc5kex" path="res://player.gd" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://c4btspdnhwgg3" path="res://Scripts/shoot_grenades.gd" id="2_cvnsp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f60y1"]
 
@@ -23,9 +24,14 @@ shape = SubResource("CircleShape2D_f60y1")
 scale = Vector2(18, 17.000002)
 mesh = SubResource("QuadMesh_v0iea")
 
-[node name="GrenedeLauncher" type="Node2D" parent="." unique_id=2122522478]
+[node name="GrenedeLauncher" type="Node2D" parent="." unique_id=2122522478 node_paths=PackedStringArray("spawn_pos")]
+script = ExtResource("2_cvnsp")
+spawn_pos = NodePath("GrenadeSpawnPos")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="GrenedeLauncher" unique_id=1156913528]
 position = Vector2(14.999999, 0)
 scale = Vector2(10.535799, 2.6533349)
 mesh = SubResource("QuadMesh_cvnsp")
+
+[node name="GrenadeSpawnPos" type="Node2D" parent="GrenedeLauncher" unique_id=254135938]
+position = Vector2(25, 0)

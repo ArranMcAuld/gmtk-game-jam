@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://xl8ckd4l8daq"]
+
+[ext_resource type="Script" uid="uid://dmj43n6a2pkre" path="res://Scripts/main_controller.gd" id="1_7i2o3"]
+
+[node name="MainController" type="Node2D" unique_id=969106577 node_paths=PackedStringArray("controller_camera")]
+script = ExtResource("1_7i2o3")
+controller_camera = NodePath("Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=847493547]
+
+[node name="Grenade_Spaw_Pos" type="Node2D" parent="." unique_id=873948083]

@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bpkuhx8kaufsb"]
 
 [ext_resource type="PackedScene" uid="uid://codl0r07jy0sm" path="res://Scenes/player.tscn" id="1_yg7k7"]
+[ext_resource type="PackedScene" uid="uid://xl8ckd4l8daq" path="res://Scenes/main_controller.tscn" id="2_k5nqk"]
+[ext_resource type="PackedScene" uid="uid://bug5evvdd2jy7" path="res://Scenes/grenade_1.tscn" id="3_rbwu2"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_tp02r"]
 
@@ -83,3 +85,14 @@ scale = Vector2(20, 20)
 mesh = SubResource("QuadMesh_rbwu2")
 
 [node name="Player" parent="." unique_id=1119650225 instance=ExtResource("1_yg7k7")]
+
+[node name="MainController" parent="." unique_id=969106577 node_paths=PackedStringArray("player", "player_camera", "grenade_launcher", "grenade_spawn_pos") instance=ExtResource("2_k5nqk")]
+position = Vector2(707, -25)
+player = NodePath("../Player")
+player_camera = NodePath("../Player/Camera2D")
+grenade_launcher = NodePath("../Player/GrenedeLauncher")
+list_of_grenades_to_choose_from = Array[PackedScene]([ExtResource("3_rbwu2")])
+grenade_spawn_pos = NodePath("Grenade_Spaw_Pos")
+
+[editable path="Player"]
+[editable path="MainController"]

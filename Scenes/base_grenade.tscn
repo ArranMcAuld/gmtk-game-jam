@@ -10,16 +10,24 @@ size = Vector2(9, 8)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_frl0m"]
 
-[node name="BaseGrenade" type="RigidBody2D" unique_id=1473638359]
+[node name="BaseGrenade" type="RigidBody2D" unique_id=1473638359 node_paths=PackedStringArray("collision")]
+visible = false
+gravity_scale = 0.0
+linear_damp_mode = 1
+linear_damp = 24.445
 script = ExtResource("1_frl0m")
+collision = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=316761242]
 shape = SubResource("CircleShape2D_6vce7")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=868225074]
 texture = SubResource("PlaceholderTexture2D_frl0m")
 
 [node name="ExplosionArea2D" type="Area2D" parent="." unique_id=3285039]
+linear_damp_space_override = 3
+linear_damp = 6.7
 
 [node name="ExplosionRadius" type="CollisionShape2D" parent="ExplosionArea2D" unique_id=918465592]
 shape = SubResource("CircleShape2D_frl0m")

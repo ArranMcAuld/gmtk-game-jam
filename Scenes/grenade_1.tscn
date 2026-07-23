@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bug5evvdd2jy7"]
+
+[ext_resource type="PackedScene" uid="uid://yu3sj5vkpjpj" path="res://Scenes/base_grenade.tscn" id="1_puvox"]
+
+[node name="Grenade1" unique_id=1473638359 instance=ExtResource("1_puvox")]
+linear_damp = 1.199
