@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://yu3sj5vkpjpj"]
 
 [ext_resource type="Script" uid="uid://yc805i5tf6jv" path="res://Scenes/base_grenade.gd" id="1_frl0m"]
+[ext_resource type="AudioStream" uid="uid://oc5d2s4pt5hr" path="res://Sound Effects/big explosion 1.wav" id="2_2b8lm"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_frl0m"]
 bounce = 1.0
@@ -12,13 +13,20 @@ radius = 5.0990195
 size = Vector2(9, 8)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_frl0m"]
+radius = 141.01419
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yce3j"]
+random_pitch = 1.3317592
+random_volume_offset_db = 3.21
+streams_count = 1
+stream_0/stream = ExtResource("2_2b8lm")
 
 [node name="BaseGrenade" type="RigidBody2D" unique_id=1473638359 node_paths=PackedStringArray("collision")]
 visible = false
 physics_material_override = SubResource("PhysicsMaterial_frl0m")
 gravity_scale = 0.0
 linear_damp_mode = 1
-linear_damp = 24.445
+linear_damp = 1.199
 script = ExtResource("1_frl0m")
 collision = NodePath("CollisionShape2D")
 
@@ -30,8 +38,13 @@ disabled = true
 texture = SubResource("PlaceholderTexture2D_frl0m")
 
 [node name="ExplosionArea2D" type="Area2D" parent="." unique_id=3285039]
+unique_name_in_owner = true
 linear_damp_space_override = 3
 linear_damp = 6.7
 
 [node name="ExplosionRadius" type="CollisionShape2D" parent="ExplosionArea2D" unique_id=918465592]
 shape = SubResource("CircleShape2D_frl0m")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1558575154]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_yce3j")

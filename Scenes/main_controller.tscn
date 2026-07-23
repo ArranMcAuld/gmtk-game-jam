@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dmj43n6a2pkre" path="res://Scripts/main_controller.gd" id="1_7i2o3"]
 [ext_resource type="FontFile" uid="uid://bjokgtb88a6nq" path="res://UI_Stuff/KiwiSoda.ttf" id="2_w65co"]
+[ext_resource type="AudioStream" uid="uid://ql63lbf4fchq" path="res://Sound Effects/grenade countdown 1.wav" id="3_imspx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w65co"]
 bg_color = Color(0.5294118, 0.73333335, 0.63529414, 1)
@@ -31,6 +32,20 @@ bg_color = Color(0.33333334, 0.50980395, 0.54509807, 1)
 bg_color = Color(0.33333334, 0.50980395, 0.54509807, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_w65co"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_htceh"]
+bg_color = Color(1, 1, 0.89411765, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3vwf7"]
+bg_color = Color(1, 0.33586034, 0.33508822, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="MainController" type="Node2D" unique_id=969106577 node_paths=PackedStringArray("controller_camera")]
 script = ExtResource("1_7i2o3")
@@ -197,3 +212,35 @@ modulate = Color(0.7882353, 0.89411765, 0.7921569, 1)
 z_index = -2
 scale = Vector2(3889.4128, 2906.8748)
 mesh = SubResource("QuadMesh_w65co")
+
+[node name="GameplayCanvas" type="CanvasLayer" parent="." unique_id=1768772979]
+unique_name_in_owner = true
+visible = false
+
+[node name="CountdownTimer" type="Label" parent="GameplayCanvas" unique_id=479910912]
+unique_name_in_owner = true
+offset_left = 17.0
+offset_top = 555.0
+offset_right = 66.0
+offset_bottom = 643.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 87
+
+[node name="HealthBar" type="ProgressBar" parent="GameplayCanvas" unique_id=98220406]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -275.0
+offset_top = 14.0
+offset_right = 275.0
+offset_bottom = 44.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_htceh")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3vwf7")
+value = 44.25
+show_percentage = false
+
+[node name="BeepingSound" type="AudioStreamPlayer" parent="." unique_id=527423680]
+unique_name_in_owner = true
+stream = ExtResource("3_imspx")

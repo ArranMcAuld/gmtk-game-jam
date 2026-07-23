@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bco5k7dj42whq"]
+
+[ext_resource type="Script" uid="uid://b23smmk084dlg" path="res://enemy.gd" id="1_wbq3y"]
+[ext_resource type="PackedScene" uid="uid://0tchnpybe17a" path="res://Scenes/enemy_bullet.tscn" id="2_cpjt6"]
+[ext_resource type="AudioStream" uid="uid://uxl5su3xvwll" path="res://Sound Effects/enemy death 1.wav" id="2_notgg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_notgg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wbq3y"]
+radius = 376.0
+height = 752.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cpjt6"]
+random_pitch = 1.4143769
+streams_count = 1
+stream_0/stream = ExtResource("2_notgg")
+
+[node name="Enemy" type="CharacterBody2D" unique_id=182635868 groups=["enemy"]]
+script = ExtResource("1_wbq3y")
+bullet = ExtResource("2_cpjt6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=718248939]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_notgg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=188124415]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=701892017]
+
+[node name="VisionArea2D" type="Area2D" parent="." unique_id=635785858]
+unique_name_in_owner = true
+position = Vector2(212, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionArea2D" unique_id=668133057]
+position = Vector2(142, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_wbq3y")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1350229747]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_cpjt6")
+
+[node name="BulletSpawnPos" type="Node2D" parent="." unique_id=1381800184]
+unique_name_in_owner = true
+position = Vector2(22, 0)

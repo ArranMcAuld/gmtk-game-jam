@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://0tchnpybe17a"]
+
+[ext_resource type="Script" uid="uid://bj6qinkya7el1" path="res://enemy_bullet.gd" id="1_tcvu8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_54jiv"]
+radius = 4.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_b6yqb"]
+
+[node name="EnemyBullet" type="Area2D" unique_id=388329615]
+script = ExtResource("1_tcvu8")
+speed = 450.0
+damage = 8.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=848540226]
+shape = SubResource("CircleShape2D_54jiv")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=121524665]
+modulate = Color(0.15709257, 0.11788509, 0.11654494, 1)
+position = Vector2(5.9604645e-08, -1.7881393e-07)
+scale = Vector2(5.9999995, 5.9999995)
+mesh = SubResource("QuadMesh_b6yqb")
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

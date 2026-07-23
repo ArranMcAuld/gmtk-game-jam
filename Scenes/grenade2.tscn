@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ci0pbq700y5r2"]
+
+[ext_resource type="PackedScene" uid="uid://yu3sj5vkpjpj" path="res://Scenes/base_grenade.tscn" id="1_sp8af"]
+[ext_resource type="Texture2D" uid="uid://o02mkjqggji6" path="res://Art/Grenade2.png" id="2_nltuw"]
+
+[node name="BaseGrenade" unique_id=1473638359 instance=ExtResource("1_sp8af")]
+grenade_name = "Bomb"
+
+[node name="Sprite2D" parent="." index="1" unique_id=868225074]
+texture = ExtResource("2_nltuw")

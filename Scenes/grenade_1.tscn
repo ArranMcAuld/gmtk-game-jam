@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://bug5evvdd2jy7"]
 
 [ext_resource type="PackedScene" uid="uid://yu3sj5vkpjpj" path="res://Scenes/base_grenade.tscn" id="1_puvox"]
+[ext_resource type="Texture2D" uid="uid://cyqsu2t1warri" path="res://Art/Grenade1.png" id="2_20t7n"]
 
 [node name="Grenade1" unique_id=1473638359 instance=ExtResource("1_puvox")]
 linear_damp = 1.199
 grenade_name = "Basic Grenade"
+
+[node name="Sprite2D" parent="." index="1" unique_id=868225074]
+texture = ExtResource("2_20t7n")

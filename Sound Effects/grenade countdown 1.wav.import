@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ql63lbf4fchq"
+path="res://.godot/imported/grenade countdown 1.wav-d3533669bf7b32913275637572f40b7b.sample"
+
+[deps]
+
+source_file="res://Sound Effects/grenade countdown 1.wav"
+dest_files=["res://.godot/imported/grenade countdown 1.wav-d3533669bf7b32913275637572f40b7b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

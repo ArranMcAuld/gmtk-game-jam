@@ -7,6 +7,11 @@ var num_rooms := 5
 var currently_selected_grenade_index = 0
 
 var grenades_been_edited : Array[bool] = []
+var action_state = false
+
+var time_elapsed := 0.0
+
+var last_beep_second: int = -1  # Tracks the last second a beep was played
 
 
 @export var player : CharacterBody2D
@@ -25,7 +30,11 @@ var grenades_been_edited : Array[bool] = []
 @onready var seconds_label : Label = %Seconds
 @onready var edit_to_play : Label = %EditToPlayText
 @onready var planning_mode_canvas : CanvasLayer = %PlanningCanvas
+@onready var playing_mode_canvas : CanvasLayer = %GameplayCanvas
+@onready var timer : Label = %CountdownTimer
 
+@onready var beeping_sound : AudioStreamPlayer = %BeepingSound
+@onready var health_bar : ProgressBar = %HealthBar
 
 
 
@@ -55,6 +64,31 @@ func _ready() -> void:
 	play.pressed.connect(_on_button_pressed_play)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	health_bar.value = player.health
+	
+	time_elapsed += delta
+	
+	if grenade_inventory.size() > 0 and is_instance_valid(grenade_inventory[0]):
+		# 1. Calculate the exact remaining time
+		var time_left: float = grenade_inventory[0].detonate_cooldown - time_elapsed
+		
+		# 2. Display integer countdown using native ceil() (clamped to 0)
+		var display_seconds: int = max(0, ceil(time_left))
+		timer.text = str(display_seconds)
+		
+		# 3. Dynamic text colouring based on the 3-second threshold
+		if time_left <= 3.0:
+			timer.modulate = Color.RED
+			
+			# 4. Play the beep sound exactly once per second
+			if display_seconds != last_beep_second and display_seconds > 0:
+				beeping_sound.play()
+				last_beep_second = display_seconds  # Lock this second
+		else:
+			timer.modulate = Color.WHITE
+			last_beep_second = -1  # Reset track if time goes back up
+	
 	if current_state == State.PLANNING:
 		grenade_type.text = grenade_inventory[currently_selected_grenade_index].grenade_name
 	
@@ -87,6 +121,7 @@ func change_state(new_state: State) -> void:
 			generate_map()
 			load_grenades_to_bench()
 			change_state(State.PLANNING)
+			action_state = false
 			
 			
 		State.PLANNING:
@@ -95,10 +130,13 @@ func change_state(new_state: State) -> void:
 			#workbench_ui.show()
 	
 		State.ACTION:
+			sort_grenades()
 			#grenade_launcher
 			Engine.time_scale = 1.0
 			player_camera.make_current()
 			planning_mode_canvas.visible = false
+			playing_mode_canvas.visible = true
+			action_state = true
 			# Start timers on ALL grenades simultaneously when action starts
 			for grenade in grenade_inventory:
 				if is_instance_valid(grenade):
@@ -110,6 +148,7 @@ func change_state(new_state: State) -> void:
 			Engine.time_scale = 0.0
 			clear_map()
 			change_state(State.SETUP)
+			action_state = false
 
 func _on_start_button_pressed():
 	if current_state == State.PLANNING:
@@ -131,9 +170,19 @@ func load_grenades_to_bench():
 		add_child(new_grenade)
 		grenade_inventory.append(new_grenade)
 		
+	
+func sort_grenades():
+	#  Sort the array using a custom lambda comparison function
+	grenade_inventory.sort_custom(
+		func(a, b): return a.detonate_cooldown < b.detonate_cooldown
+	)
+	
 	grenade_launcher.get_grenades(grenade_inventory)
 	
-	
+	print("--- Sorted Grenade Inventory ---")
+	for i in range(grenade_inventory.size()):
+		var grenade = grenade_inventory[i]
+		print("Slot %d: %s (Cooldown: %.2f)" % [i, grenade.grenade_name, grenade.detonate_cooldown])
 	
 #UI functions	
 func _on_slider_value_changed(new_value: float) -> void:
@@ -168,3 +217,4 @@ func _on_button_pressed_back():
 	
 func _on_button_pressed_play():
 	change_state(State.ACTION)
+	

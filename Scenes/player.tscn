@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://mdq8igqc5kex" path="res://player.gd" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://c4btspdnhwgg3" path="res://Scripts/shoot_grenades.gd" id="2_cvnsp"]
+[ext_resource type="AudioStream" uid="uid://c1udrtyow6evp" path="res://Sound Effects/dash 1.wav" id="3_6t5aa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f60y1"]
 
@@ -9,7 +10,13 @@
 
 [sub_resource type="QuadMesh" id="QuadMesh_cvnsp"]
 
-[node name="Player" type="CharacterBody2D" unique_id=1119650225 node_paths=PackedStringArray("player_camera", "gun")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vgqql"]
+random_pitch = 1.3122871
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("3_6t5aa")
+
+[node name="Player" type="CharacterBody2D" unique_id=1119650225 node_paths=PackedStringArray("player_camera", "gun") groups=["player"]]
 script = ExtResource("1_v0iea")
 player_camera = NodePath("Camera2D")
 gun = NodePath("GrenedeLauncher")
@@ -37,3 +44,7 @@ mesh = SubResource("QuadMesh_cvnsp")
 
 [node name="GrenadeSpawnPos" type="Node2D" parent="GrenedeLauncher" unique_id=254135938]
 position = Vector2(25, 0)
+
+[node name="DashSound" type="AudioStreamPlayer" parent="." unique_id=238265257]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_vgqql")

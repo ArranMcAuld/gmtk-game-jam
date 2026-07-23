@@ -5,6 +5,11 @@ var detonate_cooldown : float = 10.0
 const SHOOT_SPEED : float = 500.0
 @export var collision : CollisionShape2D
 @export var grenade_name : String
+@export var damage : float = 5.0
+
+@onready var explosion_sound : AudioStreamPlayer = %AudioStreamPlayer
+@onready var explosion_area : Area2D = %ExplosionArea2D
+
 
 
 func _ready() -> void:
@@ -28,6 +33,21 @@ func launch(spawn_position: Vector2, rotation: float) -> void:
 
 
 func detonate() -> void:
+	
+	explosion_sound.get_parent().remove_child(explosion_sound)
+	get_tree().current_scene.add_child(explosion_sound)
+	
+	# 2. Play the sound and connect it to self-destruct when done
+	explosion_sound.play()
+	explosion_sound.finished.connect(explosion_sound.queue_free)
 	print("BOOM! Grenade exploded!")
-	# Add explosion effects/damage here
+	
+	var overlapping_stuff = explosion_area.get_overlapping_bodies()
+	for object in overlapping_stuff:
+		if object.is_in_group("enemy"):
+			if object.has_method("take_damage"):
+				object.take_damage(damage) 
+	
+	
+	
 	queue_free()

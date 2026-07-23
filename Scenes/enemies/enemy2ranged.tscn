@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cv3d5t2cpe4vw"]
+
+[ext_resource type="PackedScene" uid="uid://bco5k7dj42whq" path="res://Scenes/enemies/enemy.tscn" id="1_gc40n"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_5oab5"]
+
+[node name="Enemy" unique_id=182635868 instance=ExtResource("1_gc40n")]
+speed = 80.0
+chase_speed = 150.0
+is_melee = false
+
+[node name="MeshInstance2D" parent="." index="2" unique_id=701892017]
+modulate = Color(0.89090204, 0.73332596, 1.92523e-06, 1)
+scale = Vector2(20, 16)
+mesh = SubResource("QuadMesh_5oab5")
