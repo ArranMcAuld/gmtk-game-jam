@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://yu3sj5vkpjpj"]
+
+[ext_resource type="Script" uid="uid://yc805i5tf6jv" path="res://Scenes/base_grenade.gd" id="1_frl0m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6vce7"]
+radius = 5.0990195
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_frl0m"]
+size = Vector2(9, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_frl0m"]
+
+[node name="BaseGrenade" type="RigidBody2D" unique_id=1473638359]
+script = ExtResource("1_frl0m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=316761242]
+shape = SubResource("CircleShape2D_6vce7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=868225074]
+texture = SubResource("PlaceholderTexture2D_frl0m")
+
+[node name="ExplosionArea2D" type="Area2D" parent="." unique_id=3285039]
+
+[node name="ExplosionRadius" type="CollisionShape2D" parent="ExplosionArea2D" unique_id=918465592]
+shape = SubResource("CircleShape2D_frl0m")

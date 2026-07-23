@@ -1,8 +1,17 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
-const CAMERA_LERP_SPEED = 350.0
-const CAMERA_DIRECTION_MULTIPLIER = 10.0
+#constant variables are all caps
+const SPEED = 500.0
+const MAX_SPEED = 300.0
+const CAMERA_LERP_SPEED = 500.0
+const CAMERA_DIRECTION_MULTIPLIER =0.0
+const DOWN_TO_MAX_SPEED = 300.0
+const DRAG = 1000.0
+const DASH_SPEED = 500.0
+const DASH_COOLDOWN = 1.5
+
+# regular variables are snake_case
+var can_dash := true 
 
 @export var player_camera : Camera2D
 @export var gun : Node2D
@@ -24,10 +33,33 @@ func _physics_process(delta: float) -> void:
 		
 	
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	if direction:
-		velocity = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.y = move_toward(velocity.y, 0, SPEED)
+
+	var target_velocity := direction * MAX_SPEED
+
+# handle acceleration on active axes
+	if direction.x != 0:
+		velocity.x = move_toward(velocity.x, target_velocity.x, SPEED * delta)
+	if direction.y != 0:
+		velocity.y = move_toward(velocity.y, target_velocity.y, SPEED * delta)
+
+# handle drag on axes with no input
+	if direction.x == 0:
+		velocity.x = move_toward(velocity.x, 0, DRAG * delta)
+	if direction.y == 0:
+		velocity.y = move_toward(velocity.y, 0, DRAG * delta)
+
+	# slowly bring above max velocity back down to MAX_SPEED after dashes/boosts
+	if velocity.length() > MAX_SPEED:
+	# Only pull back if the player isn't actively forcing an over-speed state (optional check)
+		var target_length = move_toward(velocity.length(), MAX_SPEED, DOWN_TO_MAX_SPEED * delta)
+		velocity = velocity.limit_length(target_length)
+		
+	if Input.is_action_just_pressed("dash"):
+		if can_dash:
+			velocity += direction * DASH_SPEED
+			can_dash = false
+			await get_tree().create_timer(DASH_COOLDOWN).timeout
+			can_dash = true
+		
 
 	move_and_slide()
