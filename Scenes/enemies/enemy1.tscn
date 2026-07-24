@@ -5,8 +5,6 @@
 [sub_resource type="QuadMesh" id="QuadMesh_ypfft"]
 
 [node name="Enemy" unique_id=182635868 instance=ExtResource("1_34ihc")]
-speed = 100.0
-chase_speed = 250.0
 
 [node name="MeshInstance2D" parent="." index="2" unique_id=701892017]
 modulate = Color(1, 0.12156863, 0, 1)
@@ -15,4 +13,4 @@ scale = Vector2(17.999998, 18.000002)
 mesh = SubResource("QuadMesh_ypfft")
 
 [node name="CollisionShape2D" parent="VisionArea2D" parent_id_path=PackedInt32Array(635785858) index="0" unique_id=668133057]
-position = Vector2(379, 1)
+position = Vector2(518, 10)

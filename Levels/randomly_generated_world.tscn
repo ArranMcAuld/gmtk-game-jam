@@ -256,12 +256,12 @@ grenade_spawn_pos = NodePath("Grenade_Spaw_Pos")
 [node name="Enemies" type="Node2D" parent="." unique_id=1368350086]
 
 [node name="Enemy" parent="Enemies" unique_id=182635868 instance=ExtResource("5_8ius4")]
-position = Vector2(-267, -144)
+position = Vector2(-589, -399)
 chase_speed = 150.0
 bullet = null
 
 [node name="Enemy2" parent="Enemies" unique_id=1610754704 instance=ExtResource("5_8ius4")]
-position = Vector2(-582, 175)
+position = Vector2(-925, 158)
 chase_speed = 150.0
 bullet = null
 
@@ -302,7 +302,7 @@ position = Vector2(1208, -562)
 bullet = null
 
 [node name="Enemy12" parent="Enemies" unique_id=949098245 instance=ExtResource("6_4klv4")]
-position = Vector2(-351, 0)
+position = Vector2(-529, -584)
 
 [node name="Enemy13" parent="Enemies" unique_id=300236655 instance=ExtResource("6_4klv4")]
 position = Vector2(-930, -130)

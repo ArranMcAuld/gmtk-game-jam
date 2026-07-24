@@ -7,8 +7,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_notgg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wbq3y"]
-radius = 376.0
-height = 752.0
+radius = 1195.0
+height = 2390.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cpjt6"]
 random_pitch = 1.4143769
@@ -17,7 +17,10 @@ stream_0/stream = ExtResource("2_notgg")
 
 [node name="Enemy" type="CharacterBody2D" unique_id=182635868 groups=["enemy"]]
 script = ExtResource("1_wbq3y")
+speed = 50.0
+chase_speed = 100.0
 bullet = ExtResource("2_cpjt6")
+acceleration = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=718248939]
 unique_name_in_owner = true
@@ -32,7 +35,7 @@ unique_name_in_owner = true
 position = Vector2(212, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisionArea2D" unique_id=668133057]
-position = Vector2(142, 0)
+position = Vector2(20, 1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_wbq3y")
 

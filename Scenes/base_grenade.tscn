@@ -29,6 +29,7 @@ linear_damp_mode = 1
 linear_damp = 1.199
 script = ExtResource("1_frl0m")
 collision = NodePath("CollisionShape2D")
+damage = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=316761242]
 shape = SubResource("CircleShape2D_6vce7")

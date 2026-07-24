@@ -9,7 +9,7 @@ radius = 4.0
 
 [node name="EnemyBullet" type="Area2D" unique_id=388329615]
 script = ExtResource("1_tcvu8")
-speed = 450.0
+speed = 650.0
 damage = 8.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=848540226]

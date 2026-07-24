@@ -5,8 +5,8 @@
 [sub_resource type="QuadMesh" id="QuadMesh_5oab5"]
 
 [node name="Enemy" unique_id=182635868 instance=ExtResource("1_gc40n")]
-speed = 80.0
-chase_speed = 150.0
+speed = 30.0
+chase_speed = 80.0
 is_melee = false
 
 [node name="MeshInstance2D" parent="." index="2" unique_id=701892017]

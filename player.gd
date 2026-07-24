@@ -20,6 +20,7 @@ var health := 100.0
 @export var controller : Node2D
 
 @onready var dash_sound : AudioStreamPlayer = %DashSound
+@onready var melee_area : Area2D = %MeleeAttackArea
 
 #func _process(delta: float) -> void:
 	
@@ -69,6 +70,9 @@ func _physics_process(delta: float) -> void:
 			dash_sound.play()
 			await get_tree().create_timer(DASH_COOLDOWN).timeout
 			can_dash = true
+	
+	if Input.is_action_just_pressed("stab_attack"):
+		stab_attack()
 		
 
 	move_and_slide()
@@ -77,7 +81,9 @@ func take_damage(damage : float):
 	health -= damage
 	print(health)
 	if health <= 0:
-		
-		
 		print("player died")
 		get_tree().change_scene_to_file("res://Scenes/game_over_scene.tscn")
+
+
+func stab_attack():
+	pass
