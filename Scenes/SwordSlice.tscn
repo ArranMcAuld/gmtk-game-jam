@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://c8uti0u48wo2a"]
+
+[ext_resource type="Texture2D" uid="uid://dtgq64pqnv7ad" path="res://Art/pixel_art_sword_slash_sprites.png" id="1_28pkd"]
+[ext_resource type="Script" uid="uid://nptbdu2o8odg" path="res://Scripts/sword_animation.gd" id="2_2u0uy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_318so"]
+atlas = ExtResource("1_28pkd")
+region = Rect2(0, 0, 64, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3knd"]
+atlas = ExtResource("1_28pkd")
+region = Rect2(64, 0, 64, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h28pi"]
+atlas = ExtResource("1_28pkd")
+region = Rect2(128, 0, 64, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6oam"]
+atlas = ExtResource("1_28pkd")
+region = Rect2(0, 47, 64, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlrca"]
+atlas = ExtResource("1_28pkd")
+region = Rect2(64, 47, 64, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5jxn"]
+atlas = ExtResource("1_28pkd")
+region = Rect2(128, 47, 64, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nlh7"]
+atlas = ExtResource("1_28pkd")
+region = Rect2(0, 94, 64, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ah1d"]
+atlas = ExtResource("1_28pkd")
+region = Rect2(64, 94, 64, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exvys"]
+atlas = ExtResource("1_28pkd")
+region = Rect2(128, 94, 64, 47)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y5tp0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_318so")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3knd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h28pi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6oam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlrca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5jxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nlh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ah1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exvys")
+}],
+"loop": false,
+"name": &"SwordSlice",
+"speed": 24.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" unique_id=102876957]
+sprite_frames = SubResource("SpriteFrames_y5tp0")
+animation = &"SwordSlice"
+autoplay = "SwordSlice"
+script = ExtResource("2_2u0uy")

@@ -9,20 +9,31 @@ const DOWN_TO_MAX_SPEED = 300.0
 const DRAG = 1000.0
 const DASH_SPEED = 500.0
 const DASH_COOLDOWN = 1.5
+const SWORD_COOLDOWN = 0.5
 
 # regular variables are snake_case
 var can_dash := true 
 
 var health := 100.0
 
+var can_attack := true
+
 @export var player_camera : Camera2D
 @export var gun : Node2D
 @export var controller : Node2D
+@export var slash_scene: PackedScene = preload("res://Scenes/SwordSlice.tscn")
+@export var slash_spawn_pos: Node2D
+@export var foot_step_cooldown: float = 1.0
 
 @onready var dash_sound : AudioStreamPlayer = %DashSound
 @onready var melee_area : Area2D = %MeleeAttackArea
+@onready var sword_hit_sound : AudioStreamPlayer = $SwordHitSound
+@onready var sword_miss_sound : AudioStreamPlayer = $SwordMissSound
+@onready var step_sound : AudioStreamPlayer = %Footsteps
 
-#func _process(delta: float) -> void:
+
+func _ready() -> void:
+	footstep_loop()
 	
 
 func _physics_process(delta: float) -> void:
@@ -78,15 +89,53 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func take_damage(damage : float):
-	health -= damage
+	health -= damage 
 	print(health)
 	if health <= 0:
 		print("player died")
 		get_tree().change_scene_to_file("res://Scenes/game_over_scene.tscn")
 
 
-func stab_attack():
+func stab_attack() -> void:
+	
+	if not can_attack:
+		return
+		
+	
+	can_attack = false
+	
+	
+	if slash_scene != null:
+		var slash_instance = slash_scene.instantiate()
+		get_parent().add_child(slash_instance) # Add to world parent so it doesn't stick/stretch with player
+		slash_instance.global_position = slash_spawn_pos.global_position
+		slash_instance.global_rotation = slash_spawn_pos.global_rotation
+
+	
 	var bodies = melee_area.get_overlapping_bodies()
+	var hit_any_enemy := false
+	
 	for body in bodies:
-		if body.is_in_group("enemy"):
+		if body.is_in_group("enemy") and body.has_method("take_damage"):
 			body.take_damage(2.0, global_position)
+			hit_any_enemy = true
+			print("hit enemy")
+			
+	if hit_any_enemy:
+		can_dash = true
+		# play enemy hit sound
+		sword_hit_sound.play()
+	else:
+		# play miss/whiff sound
+		sword_miss_sound.play()
+		pass
+
+	
+	await get_tree().create_timer(SWORD_COOLDOWN).timeout
+	can_attack = true
+	
+func footstep_loop():
+	if velocity.length() > 1.0:
+		step_sound.play()
+	await get_tree().create_timer(foot_step_cooldown).timeout
+	footstep_loop()

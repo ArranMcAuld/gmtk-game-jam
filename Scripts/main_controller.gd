@@ -162,13 +162,13 @@ func clear_map():
 	
 func load_grenades_to_bench():
 	for i in range(num_grenades):
-		var new_grenade = list_of_grenades_to_choose_from.pick_random() .instantiate()
-		# 2. Set its position
+		var new_grenade = list_of_grenades_to_choose_from.pick_random().instantiate()
 		new_grenade.global_position = grenade_spawn_pos.global_position
-		
-		# 3. Add it to the active game world
 		add_child(new_grenade)
 		grenade_inventory.append(new_grenade)
+		
+		
+		new_grenade.exploded.connect(_on_grenade_exploded)
 		
 	
 func sort_grenades():
@@ -183,6 +183,13 @@ func sort_grenades():
 	for i in range(grenade_inventory.size()):
 		var grenade = grenade_inventory[i]
 		print("Slot %d: %s (Cooldown: %.2f)" % [i, grenade.grenade_name, grenade.detonate_cooldown])
+		
+func _on_grenade_exploded(grenade_instance: base_grenade) -> void:
+	# .erase() finds that specific grenade in the array and removes it.
+	# This automatically shifts the next grenade to index 0!
+	if grenade_inventory.has(grenade_instance):
+		grenade_inventory.erase(grenade_instance)
+		print("Grenade removed from list. Remaining: ", grenade_inventory.size())
 	
 #UI functions	
 func _on_slider_value_changed(new_value: float) -> void:

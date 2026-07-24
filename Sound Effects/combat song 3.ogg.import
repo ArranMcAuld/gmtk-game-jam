@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dfi5fsibqg8up"
+path="res://.godot/imported/combat song 3.ogg-86a9d381bf4c3f842b589ed534baa78b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sound Effects/combat song 3.ogg"
+dest_files=["res://.godot/imported/combat song 3.ogg-86a9d381bf4c3f842b589ed534baa78b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://bhxfvijwne2v6"]
+
+[ext_resource type="Texture2D" uid="uid://cnvwm26h1q5g5" path="res://Art/spritesheet.png" id="1_2qsrt"]
+[ext_resource type="Script" uid="uid://dk2sk6urkqfhf" path="res://Scripts/explosion_anim.gd" id="2_qmsi8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fudo6"]
+atlas = ExtResource("1_2qsrt")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdwvf"]
+atlas = ExtResource("1_2qsrt")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra58c"]
+atlas = ExtResource("1_2qsrt")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eiy00"]
+atlas = ExtResource("1_2qsrt")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ficul"]
+atlas = ExtResource("1_2qsrt")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlb5m"]
+atlas = ExtResource("1_2qsrt")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buct7"]
+atlas = ExtResource("1_2qsrt")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qmsi8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fudo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdwvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ra58c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eiy00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ficul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlb5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_buct7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="ExplosionAnim" type="AnimatedSprite2D" unique_id=649094519]
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_qmsi8")
+autoplay = "default"
+frame = 6
+frame_progress = 1.0
+speed_scale = -1.0
+script = ExtResource("2_qmsi8")

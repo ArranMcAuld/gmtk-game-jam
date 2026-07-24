@@ -10,7 +10,6 @@ extends CharacterBody2D
 @export var chance_to_spawn_bullet : float = 0.01
 @export var knockback_force : float = 1000.0
 
-# --- NEW STEERING VARIABLES ---
 @export var acceleration := 2500.0    # How fast the enemy matches target speed
 @export var friction := 15.0          # How fast the enemy stops or turns (higher = sharper turns)
 @export var knockback_decay := 5.0    # How fast speeds above max speed bleed off
