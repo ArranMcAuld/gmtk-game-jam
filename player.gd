@@ -86,4 +86,7 @@ func take_damage(damage : float):
 
 
 func stab_attack():
-	pass
+	var bodies = melee_area.get_overlapping_bodies()
+	for body in bodies:
+		if body.is_in_group("enemy"):
+			body.take_damage(2.0, global_position)

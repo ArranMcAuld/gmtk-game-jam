@@ -19,6 +19,8 @@ stream_0/stream = ExtResource("3_6t5aa")
 [sub_resource type="CircleShape2D" id="CircleShape2D_6t5aa"]
 radius = 19.0
 
+[sub_resource type="SphereMesh" id="SphereMesh_6t5aa"]
+
 [node name="Player" type="CharacterBody2D" unique_id=1119650225 node_paths=PackedStringArray("player_camera", "gun") groups=["player"]]
 script = ExtResource("1_v0iea")
 player_camera = NodePath("Camera2D")
@@ -58,3 +60,8 @@ position = Vector2(9, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeAttackArea" unique_id=688864730]
 shape = SubResource("CircleShape2D_6t5aa")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="MeleeAttackArea" unique_id=506261051]
+position = Vector2(0, -0.49999487)
+scale = Vector2(40.045357, 39.00001)
+mesh = SubResource("SphereMesh_6t5aa")
